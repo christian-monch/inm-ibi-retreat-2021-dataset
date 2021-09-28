@@ -33,7 +33,13 @@ def main():
         data = read_data(sys.stdin)
 
     result = perform_analysis(data)
-    print(f"red: {result[0]}, green: {result[1]}, blue: {result[2]}")
+
+    output_string = f"red: {result[0]}, green: {result[1]}, blue: {result[2]}\n"
+    if len(sys.argv) > 2:
+        with open(sys.argv[2], "wt") as f:
+            f.write(output_string)
+    else:
+        sys.stdout.write(output_string)
 
 
 if __name__ == "__main__":
